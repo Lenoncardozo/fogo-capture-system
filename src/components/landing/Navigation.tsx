@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import logoFogo from '@/assets/logo-fogo.jpg';
 
 const navItems = [
   { label: 'Contexto', href: '#contexto' },
