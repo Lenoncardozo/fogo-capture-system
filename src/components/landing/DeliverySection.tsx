@@ -3,6 +3,7 @@ import restaurantImg from '@/assets/restaurant-interior.jpg';
 import grilledDish from '@/assets/grilled-dish.jpg';
 import foodDetail from '@/assets/food-detail.jpg';
 import terraceImg from '@/assets/terrace-night.jpg';
+import logoFogo from '@/assets/logo-fogo.jpg';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
