@@ -147,34 +147,33 @@ const DeliverySection = () => {
             </motion.div>
           </div>
 
-            {/* Simulated Instagram feed grid */}
-            <motion.div variants={fadeUp} custom={2}>
-              <p className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground mb-4">
-                6 posts conceituais iniciais
-              </p>
-              <div className="grid grid-cols-3 gap-1 rounded-xl overflow-hidden">
-                {conceptPosts.map((post, i) => (
-                  <div key={post.title} className="relative aspect-square bg-secondary/60 group overflow-hidden">
-                    <img
-                      src={[restaurantImg, grilledDish, foodDetail, terraceImg, foodDetail, grilledDish][i]}
-                      alt={post.title}
-                      className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                      loading="lazy"
-                      width={400}
-                      height={400}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
-                      <p className="font-body text-[10px] font-semibold text-foreground leading-tight">{post.title}</p>
-                      <p className="font-body text-[9px] text-primary/80">{post.type}</p>
-                    </div>
+          {/* Simulated Instagram feed grid — below the before/after */}
+          <motion.div variants={fadeUp} custom={3} className="mt-10">
+            <p className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground mb-4 text-center">
+              6 posts conceituais iniciais
+            </p>
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-1 rounded-xl overflow-hidden max-w-3xl mx-auto">
+              {conceptPosts.map((post, i) => (
+                <div key={post.title} className="relative aspect-square bg-secondary/60 group overflow-hidden">
+                  <img
+                    src={[restaurantImg, grilledDish, foodDetail, terraceImg, foodDetail, grilledDish][i]}
+                    alt={post.title}
+                    className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    loading="lazy"
+                    width={400}
+                    height={400}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-2">
+                    <p className="font-body text-[9px] font-semibold text-foreground leading-tight">{post.title}</p>
+                    <p className="font-body text-[8px] text-primary/80">{post.type}</p>
                   </div>
-                ))}
-              </div>
-              <p className="font-body text-xs text-muted-foreground mt-3 italic">
-                Cada post com lógica de conversão — não conteúdo por conteúdo.
-              </p>
-            </motion.div>
-          </div>
+                </div>
+              ))}
+            </div>
+            <p className="font-body text-xs text-muted-foreground mt-3 italic text-center">
+              Cada post com lógica de conversão — não conteúdo por conteúdo.
+            </p>
+          </motion.div>
         </motion.div>
 
         {/* B2C Preview — Premium embedded demo */}
