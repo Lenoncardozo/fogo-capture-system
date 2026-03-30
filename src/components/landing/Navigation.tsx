@@ -43,9 +43,10 @@ const Navigation = () => {
         <a
           href="#hero"
           onClick={(e) => handleClick(e, '#hero')}
-          className="font-display text-xl tracking-wider text-primary font-semibold"
+          className="flex items-center gap-2"
         >
-          FOGO
+          <img src={logoFogo} alt="Fogo - Parrilla & Café" className="h-9 w-9 rounded-full object-cover" />
+          <span className="font-display text-lg tracking-wider text-primary font-semibold">FOGO</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
