@@ -19,6 +19,17 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    const el = document.querySelector(href);
+    if (el) {
+      const offset = 72;
+      const y = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -28,16 +39,20 @@ const Navigation = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
-        <a href="#hero" className="font-display text-xl tracking-wider text-primary font-semibold">
+        <a
+          href="#hero"
+          onClick={(e) => handleClick(e, '#hero')}
+          className="font-display text-xl tracking-wider text-primary font-semibold"
+        >
           FOGO
         </a>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
+              onClick={(e) => handleClick(e, item.href)}
               className="text-sm font-body text-muted-foreground hover:text-primary transition-colors tracking-wide"
             >
               {item.label}
@@ -45,7 +60,6 @@ const Navigation = () => {
           ))}
         </div>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-foreground"
@@ -61,14 +75,13 @@ const Navigation = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border/50 px-6 pb-6 space-y-4">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              onClick={() => setMenuOpen(false)}
+              onClick={(e) => handleClick(e, item.href)}
               className="block text-sm font-body text-muted-foreground hover:text-primary transition-colors"
             >
               {item.label}

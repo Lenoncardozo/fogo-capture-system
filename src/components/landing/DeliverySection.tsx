@@ -1,30 +1,36 @@
 import { motion } from 'framer-motion';
-import restaurantImg from '@/assets/restaurant-ambience.jpg';
+import restaurantImg from '@/assets/restaurant-interior.jpg';
+import grilledDish from '@/assets/grilled-dish.jpg';
 import foodDetail from '@/assets/food-detail.jpg';
-import foodSpread from '@/assets/food-spread.jpg';
 import terraceImg from '@/assets/terrace-night.jpg';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.7, delay: i * 0.12 },
+    transition: { duration: 0.7, delay: i * 0.1 },
   }),
 };
 
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.96 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+};
+
 const conceptPosts = [
-  { title: 'Apresentação do Fogo', type: 'Carrossel', desc: 'Fogo, brasa e sabor em Canasvieiras. Introdução visual do restaurante.' },
-  { title: 'O prato que marca', type: 'Reels', desc: 'Vídeo curto do prato principal com close na grelha e fogo.' },
-  { title: 'Vista + Mesa', type: 'Foto editorial', desc: 'Ambiente noturno com iluminação quente e mesa posta.' },
-  { title: 'Depoimento visual', type: 'Story/Reels', desc: 'Turista real comentando a experiência. Prova social autêntica.' },
-  { title: '¿Buscas donde comer?', type: 'Ad em espanhol', desc: 'Post direcionado ao público hispano com CTA direto.' },
-  { title: 'Por trás da brasa', type: 'Reels bastidor', desc: 'Processo de preparo, tempero, fogo. Desejo e autenticidade.' },
+  { title: 'Apresentação do Fogo', type: 'Carrossel' },
+  { title: 'O prato que marca', type: 'Reels' },
+  { title: 'Vista + Mesa', type: 'Foto editorial' },
+  { title: 'Depoimento visual', type: 'Story/Reels' },
+  { title: '¿Buscás donde comer?', type: 'Ad em espanhol' },
+  { title: 'Por trás da brasa', type: 'Reels bastidor' },
 ];
 
 const DeliverySection = () => {
   return (
-    <section id="demonstracao" className="py-32 relative">
+    <section id="demonstracao" className="py-24 md:py-36 relative">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -35,16 +41,16 @@ const DeliverySection = () => {
             Primeira entrega
           </motion.p>
           <motion.h2 variants={fadeUp} custom={1} className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Demonstração prática<br />
+            Demonstração prática{' '}
             <span className="text-gradient-fire">de execução.</span>
           </motion.h2>
           <motion.p variants={fadeUp} custom={2} className="font-body text-muted-foreground max-w-2xl mx-auto">
-            Não é promessa. É amostra real do que será construído para o Fogo — 
-            desde a reestruturação do Instagram até a presença digital completa.
+            Não é promessa. É amostra real do que será construído — 
+            da reestruturação do Instagram à presença digital completa.
           </motion.p>
         </motion.div>
 
-        {/* Instagram Restructure */}
+        {/* Instagram Restructure — Bio + Feed simulation */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -55,89 +61,70 @@ const DeliverySection = () => {
             Reestruturação do Instagram
           </motion.h3>
 
-          {/* Bio proposal */}
-          <motion.div
-            variants={fadeUp}
-            custom={1}
-            className="bg-card border border-border rounded-xl p-8 max-w-md mx-auto mb-12"
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 rounded-full bg-gradient-fire flex items-center justify-center text-primary-foreground font-display font-bold text-xl">
-                F
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            {/* Bio proposal */}
+            <motion.div variants={fadeUp} custom={1} className="bg-card border border-border rounded-xl p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-fire flex items-center justify-center text-primary-foreground font-display font-bold text-xl">
+                  F
+                </div>
+                <div>
+                  <p className="font-body font-semibold text-foreground">fogocanas</p>
+                  <p className="font-body text-xs text-muted-foreground">Fogo · Canasvieiras</p>
+                </div>
               </div>
-              <div>
-                <p className="font-body font-semibold text-foreground">fogocanas</p>
-                <p className="font-body text-xs text-muted-foreground">Fogo · Canasvieiras</p>
+              <div className="space-y-1 font-body text-sm text-secondary-foreground/80">
+                <p>Brasa, sabor e mar em Canasvieiras</p>
+                <p>Florianópolis · Aberto todos os dias</p>
+                <p>Português & Español</p>
+                <p className="text-primary font-medium">↓ Reserve sua mesa agora</p>
               </div>
-            </div>
-            <div className="space-y-1 font-body text-sm text-secondary-foreground/80">
-              <p>🔥 Brasa, sabor e mar em Canasvieiras</p>
-              <p>📍 Florianópolis · Aberto todos os dias</p>
-              <p>🇧🇷🇦🇷 Português & Español</p>
-              <p className="text-primary font-medium">↓ Reserve sua mesa agora</p>
-            </div>
-
-            {/* Highlights */}
-            <div className="flex gap-3 mt-6 overflow-x-auto pb-2">
-              {['Menu', 'Ambiente', 'Avaliações', 'Reserva', 'Español'].map((h) => (
-                <div key={h} className="flex-shrink-0 flex flex-col items-center gap-1">
-                  <div className="w-14 h-14 rounded-full border-2 border-primary/30 bg-secondary/50 flex items-center justify-center">
-                    <span className="text-[10px] font-body text-muted-foreground">{h.slice(0, 3)}</span>
+              <div className="flex gap-3 mt-6 overflow-x-auto pb-2">
+                {['Menu', 'Ambiente', 'Avaliações', 'Reserva', 'Español'].map((h) => (
+                  <div key={h} className="flex-shrink-0 flex flex-col items-center gap-1">
+                    <div className="w-14 h-14 rounded-full border-2 border-primary/30 bg-secondary/50 flex items-center justify-center">
+                      <span className="text-[10px] font-body text-muted-foreground">{h.slice(0, 3)}</span>
+                    </div>
+                    <span className="text-[10px] font-body text-muted-foreground">{h}</span>
                   </div>
-                  <span className="text-[10px] font-body text-muted-foreground">{h}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+                ))}
+              </div>
+              <p className="font-body text-xs text-muted-foreground mt-6 text-center italic">
+                Perfil como funil: Bio → Highlights → Feed → CTA → Conversão
+              </p>
+            </motion.div>
 
-          <motion.p variants={fadeUp} custom={2} className="text-center font-body text-sm text-muted-foreground mb-4">
-            Perfil como funil: Bio → Highlights → Feed → CTA → Conversão
-          </motion.p>
-        </motion.div>
-
-        {/* 6 Conceptual Posts */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="mb-24"
-        >
-          <motion.h3 variants={fadeUp} custom={0} className="font-display text-2xl font-bold mb-4 text-center">
-            6 posts conceituais iniciais
-          </motion.h3>
-          <motion.p variants={fadeUp} custom={1} className="font-body text-sm text-muted-foreground text-center mb-12 max-w-xl mx-auto">
-            Cada post com lógica de conversão. Não é conteúdo por conteúdo — é comunicação com objetivo.
-          </motion.p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {conceptPosts.map((post, i) => (
-              <motion.div
-                key={post.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                custom={i + 2}
-                className="bg-card/50 border border-border rounded-xl p-6 hover:border-primary/30 transition-colors"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-body text-xs tracking-widest text-primary/60">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="font-body text-[10px] tracking-wider uppercase text-muted-foreground bg-secondary/60 px-2 py-1 rounded">
-                    {post.type}
-                  </span>
-                </div>
-                <h4 className="font-display text-base font-semibold mb-2">{post.title}</h4>
-                <p className="font-body text-xs text-muted-foreground leading-relaxed">{post.desc}</p>
-              </motion.div>
-            ))}
+            {/* Simulated Instagram feed grid */}
+            <motion.div variants={fadeUp} custom={2}>
+              <p className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground mb-4">
+                6 posts conceituais iniciais
+              </p>
+              <div className="grid grid-cols-3 gap-1 rounded-xl overflow-hidden">
+                {conceptPosts.map((post, i) => (
+                  <div key={post.title} className="relative aspect-square bg-secondary/60 group overflow-hidden">
+                    <img
+                      src={[restaurantImg, grilledDish, foodDetail, terraceImg, foodDetail, grilledDish][i]}
+                      alt={post.title}
+                      className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                      loading="lazy"
+                      width={400}
+                      height={400}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+                      <p className="font-body text-[10px] font-semibold text-foreground leading-tight">{post.title}</p>
+                      <p className="font-body text-[9px] text-primary/80">{post.type}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="font-body text-xs text-muted-foreground mt-3 italic">
+                Cada post com lógica de conversão — não conteúdo por conteúdo.
+              </p>
+            </motion.div>
           </div>
         </motion.div>
 
-        {/* ============================================= */}
-        {/* B2C EMBEDDED PREVIEW */}
-        {/* ============================================= */}
+        {/* B2C Preview — Premium embedded demo */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -150,13 +137,11 @@ const DeliverySection = () => {
             </span>
           </motion.div>
 
-          {/* Framed container for B2C preview */}
           <motion.div
-            variants={fadeUp}
-            custom={1}
+            variants={scaleIn}
             className="relative border border-primary/20 rounded-2xl overflow-hidden bg-charcoal shadow-warm"
           >
-            {/* Browser chrome simulation */}
+            {/* Browser chrome */}
             <div className="bg-secondary/40 px-4 py-3 flex items-center gap-2 border-b border-border/50">
               <div className="flex gap-1.5">
                 <div className="w-2.5 h-2.5 rounded-full bg-muted-foreground/20" />
@@ -170,46 +155,46 @@ const DeliverySection = () => {
               </div>
             </div>
 
-            {/* B2C Preview Hero */}
+            {/* B2C Hero — Full-bleed with cinematic overlay */}
             <div className="relative">
               <img
                 src={restaurantImg}
                 alt="Ambiente premium do Fogo"
-                className="w-full h-64 md:h-80 object-cover"
+                className="w-full h-72 md:h-96 object-cover"
                 loading="lazy"
-                width={1280}
-                height={960}
+                width={1920}
+                height={1080}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/30 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                <p className="font-display text-3xl md:text-4xl font-bold text-foreground leading-tight">
-                  Onde o fogo encontra o mar.
+                <p className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight">
+                  Onde o fogo<br />encontra o mar.
                 </p>
-                <p className="font-body text-sm text-secondary-foreground/70 mt-2">
+                <p className="font-body text-sm text-secondary-foreground/70 mt-3 max-w-md">
                   Brasa, sabor e a brisa de Canasvieiras. Uma experiência que fica.
                 </p>
               </div>
             </div>
 
-            {/* B2C Content blocks */}
+            {/* B2C Content */}
             <div className="p-8 md:p-12 space-y-12">
-              {/* Gastronomy block */}
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
+              {/* Gastronomy — Asymmetric 60/40 */}
+              <div className="grid md:grid-cols-5 gap-8 items-center">
+                <div className="md:col-span-3">
                   <p className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-3">A experiência</p>
-                  <h3 className="font-display text-2xl font-bold mb-4">
+                  <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">
                     Gastronomia na brasa,<br />feita com fogo de verdade.
                   </h3>
                   <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                    Cada prato é preparado com técnica, ingredientes selecionados e o calor que só o fogo 
-                    direto dá. Da entrada à sobremesa, uma jornada de sabor para lembrar.
+                    Cada prato é preparado com técnica, ingredientes selecionados e o calor que só 
+                    o fogo direto dá. Uma jornada de sabor para lembrar.
                   </p>
                 </div>
-                <div className="relative rounded-xl overflow-hidden image-placeholder">
+                <div className="md:col-span-2 relative rounded-xl overflow-hidden image-placeholder">
                   <img
-                    src={foodDetail}
-                    alt="Prato premium"
-                    className="w-full h-56 object-cover"
+                    src={grilledDish}
+                    alt="Prato premium na grelha"
+                    className="w-full h-56 md:h-64 object-cover"
                     loading="lazy"
                     width={1024}
                     height={1024}
@@ -217,30 +202,38 @@ const DeliverySection = () => {
                 </div>
               </div>
 
-              {/* Dishes grid */}
+              {/* Dishes — Image grid instead of emoji cards */}
               <div>
                 <p className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-6">Destaques</p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {[
-                    { name: 'Ancho na brasa', tag: 'Especialidade' },
-                    { name: 'Frutos do mar', tag: 'Temporada' },
-                    { name: 'Risoto de camarão', tag: 'Favorito' },
-                    { name: 'Sobremesa flamada', tag: 'Assinatura' },
-                  ].map((dish) => (
-                    <div key={dish.name} className="bg-secondary/30 rounded-lg p-4 border border-border/50">
-                      <div className="w-full h-20 bg-secondary/50 rounded-md mb-3 flex items-center justify-center">
-                        <span className="text-2xl">🔥</span>
+                    { name: 'Da grelha', tag: 'Especialidade' },
+                    { name: 'Do mar', tag: 'Temporada' },
+                    { name: 'Da casa', tag: 'Favorito' },
+                    { name: 'Sobremesas', tag: 'Assinatura' },
+                  ].map((dish, i) => (
+                    <div key={dish.name} className="relative rounded-lg overflow-hidden group">
+                      <img
+                        src={[grilledDish, foodDetail, restaurantImg, terraceImg][i]}
+                        alt={dish.name}
+                        className="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                        width={400}
+                        height={400}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-3">
+                        <p className="font-body text-xs font-medium text-foreground">{dish.name}</p>
+                        <p className="font-body text-[10px] text-primary/70">{dish.tag}</p>
                       </div>
-                      <p className="font-body text-xs font-medium text-foreground">{dish.name}</p>
-                      <p className="font-body text-[10px] text-primary/70">{dish.tag}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Location / CTA block */}
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="relative rounded-xl overflow-hidden image-placeholder">
+              {/* Location / CTA — Reversed asymmetric */}
+              <div className="grid md:grid-cols-5 gap-8 items-center">
+                <div className="md:col-span-2 relative rounded-xl overflow-hidden image-placeholder order-2 md:order-1">
                   <img
                     src={terraceImg}
                     alt="Terraço noturno"
@@ -250,7 +243,7 @@ const DeliverySection = () => {
                     height={960}
                   />
                 </div>
-                <div>
+                <div className="md:col-span-3 order-1 md:order-2">
                   <p className="font-body text-xs tracking-[0.2em] uppercase text-primary mb-3">Visite</p>
                   <h3 className="font-display text-2xl font-bold mb-4">
                     Canasvieiras, Florianópolis
@@ -274,7 +267,7 @@ const DeliverySection = () => {
             {/* Label */}
             <div className="bg-secondary/30 px-4 py-2 text-center border-t border-border/50">
               <p className="font-body text-[10px] text-muted-foreground tracking-wider">
-                ⟡ Preview conceitual — será desenvolvido com a identidade real do Fogo
+                Preview conceitual — será desenvolvido com a identidade real do Fogo
               </p>
             </div>
           </motion.div>
