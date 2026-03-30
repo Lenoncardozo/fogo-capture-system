@@ -3,6 +3,7 @@ import restaurantImg from '@/assets/restaurant-interior.jpg';
 import grilledDish from '@/assets/grilled-dish.jpg';
 import foodDetail from '@/assets/food-detail.jpg';
 import terraceImg from '@/assets/terrace-night.jpg';
+import logoFogo from '@/assets/logo-fogo.jpg';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -57,71 +58,122 @@ const DeliverySection = () => {
           viewport={{ once: true }}
           className="mb-24"
         >
-          <motion.h3 variants={fadeUp} custom={0} className="font-display text-2xl font-bold mb-8 text-center">
+          <motion.h3 variants={fadeUp} custom={0} className="font-display text-2xl font-bold mb-3 text-center">
             Reestruturação do Instagram
           </motion.h3>
+          <motion.p variants={fadeUp} custom={0.5} className="font-body text-xs text-muted-foreground text-center mb-8">
+            Perfil atual → Perfil otimizado como funil de conversão
+          </motion.p>
 
           <div className="grid lg:grid-cols-2 gap-8 items-start">
-            {/* Bio proposal */}
-            <motion.div variants={fadeUp} custom={1} className="bg-card border border-border rounded-xl p-8">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-full bg-gradient-fire flex items-center justify-center text-primary-foreground font-display font-bold text-xl">
-                  F
-                </div>
-                <div>
-                  <p className="font-body font-semibold text-foreground">fogocanas</p>
-                  <p className="font-body text-xs text-muted-foreground">Fogo · Canasvieiras</p>
-                </div>
-              </div>
-              <div className="space-y-1 font-body text-sm text-secondary-foreground/80">
-                <p>Brasa, sabor e mar em Canasvieiras</p>
-                <p>Florianópolis · Aberto todos os dias</p>
-                <p>Português & Español</p>
-                <p className="text-primary font-medium">↓ Reserve sua mesa agora</p>
-              </div>
-              <div className="flex gap-3 mt-6 overflow-x-auto pb-2">
-                {['Menu', 'Ambiente', 'Avaliações', 'Reserva', 'Español'].map((h) => (
-                  <div key={h} className="flex-shrink-0 flex flex-col items-center gap-1">
-                    <div className="w-14 h-14 rounded-full border-2 border-primary/30 bg-secondary/50 flex items-center justify-center">
-                      <span className="text-[10px] font-body text-muted-foreground">{h.slice(0, 3)}</span>
+            {/* Current profile — "Antes" */}
+            <motion.div variants={fadeUp} custom={1}>
+              <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-3 text-center">Perfil atual</p>
+              <div className="bg-[hsl(0_0%_7%)] border border-border/40 rounded-xl p-6">
+                {/* Header row */}
+                <div className="flex items-center gap-4 mb-5">
+                  <img src={logoFogo} alt="Fogo" className="w-20 h-20 rounded-full object-cover border-2 border-border/30" />
+                  <div className="flex-1">
+                    <p className="font-body font-semibold text-foreground text-sm">fogo.restaurante.canasvieiras</p>
+                    <p className="font-body text-xs text-muted-foreground">Fogo Restaurante Canasvieiras</p>
+                    <div className="flex gap-5 mt-2">
+                      <span className="font-body text-xs text-foreground"><strong>69</strong> <span className="text-muted-foreground">posts</span></span>
+                      <span className="font-body text-xs text-foreground"><strong>2.979</strong> <span className="text-muted-foreground">followers</span></span>
+                      <span className="font-body text-xs text-foreground"><strong>419</strong> <span className="text-muted-foreground">following</span></span>
                     </div>
-                    <span className="text-[10px] font-body text-muted-foreground">{h}</span>
                   </div>
-                ))}
+                </div>
+                {/* Bio */}
+                <div className="space-y-0.5 font-body text-xs text-secondary-foreground/70 mb-4">
+                  <p className="text-muted-foreground">Entrepreneur</p>
+                  <p>🔥 Onde o fogo se transforma em experiência</p>
+                  <p>🦐 Parrilla, mar & momentos na praia</p>
+                  <p>📍 Canasvieiras – Florianópolis</p>
+                  <p className="text-muted-foreground text-[11px]">Rua Mario Lacombe 735, Canasvieiras 88054-260</p>
+                </div>
+                {/* Highlights */}
+                <div className="flex gap-4 mt-4 overflow-x-auto pb-1">
+                  {['Horarios', 'Localização', 'Menú', 'Pomoções'].map((h) => (
+                    <div key={h} className="flex-shrink-0 flex flex-col items-center gap-1">
+                      <div className="w-16 h-16 rounded-full border border-border/40 bg-secondary/30 flex items-center justify-center">
+                        <img src={logoFogo} alt={h} className="w-10 h-10 rounded-full object-cover opacity-50" />
+                      </div>
+                      <span className="text-[10px] font-body text-muted-foreground">{h}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <p className="font-body text-xs text-muted-foreground mt-6 text-center italic">
-                Perfil como funil: Bio → Highlights → Feed → CTA → Conversão
-              </p>
             </motion.div>
 
-            {/* Simulated Instagram feed grid */}
+            {/* Proposed profile — "Depois" */}
             <motion.div variants={fadeUp} custom={2}>
-              <p className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground mb-4">
-                6 posts conceituais iniciais
-              </p>
-              <div className="grid grid-cols-3 gap-1 rounded-xl overflow-hidden">
-                {conceptPosts.map((post, i) => (
-                  <div key={post.title} className="relative aspect-square bg-secondary/60 group overflow-hidden">
-                    <img
-                      src={[restaurantImg, grilledDish, foodDetail, terraceImg, foodDetail, grilledDish][i]}
-                      alt={post.title}
-                      className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                      loading="lazy"
-                      width={400}
-                      height={400}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
-                      <p className="font-body text-[10px] font-semibold text-foreground leading-tight">{post.title}</p>
-                      <p className="font-body text-[9px] text-primary/80">{post.type}</p>
+              <p className="font-body text-[10px] tracking-[0.2em] uppercase text-primary mb-3 text-center">Perfil otimizado</p>
+              <div className="bg-card border border-primary/20 rounded-xl p-6 ring-1 ring-primary/10">
+                {/* Header row */}
+                <div className="flex items-center gap-4 mb-5">
+                  <img src={logoFogo} alt="Fogo" className="w-20 h-20 rounded-full object-cover border-2 border-primary/40" />
+                  <div className="flex-1">
+                    <p className="font-body font-semibold text-foreground text-sm">fogocanas</p>
+                    <p className="font-body text-xs text-muted-foreground">Fogo · Canasvieiras</p>
+                    <div className="flex gap-5 mt-2">
+                      <span className="font-body text-xs text-foreground"><strong>69</strong> <span className="text-muted-foreground">posts</span></span>
+                      <span className="font-body text-xs text-foreground"><strong>2.979</strong> <span className="text-muted-foreground">followers</span></span>
+                      <span className="font-body text-xs text-foreground"><strong>419</strong> <span className="text-muted-foreground">following</span></span>
                     </div>
                   </div>
-                ))}
+                </div>
+                {/* Optimized bio */}
+                <div className="space-y-0.5 font-body text-sm text-secondary-foreground/80 mb-4">
+                  <p>Brasa, sabor e mar em Canasvieiras</p>
+                  <p>Florianópolis · Aberto todos os dias</p>
+                  <p>Português & Español</p>
+                  <p className="text-primary font-medium">↓ Reserve sua mesa agora</p>
+                </div>
+                {/* Optimized highlights */}
+                <div className="flex gap-3 mt-4 overflow-x-auto pb-1">
+                  {['Menu', 'Ambiente', 'Avaliações', 'Reserva', 'Español'].map((h) => (
+                    <div key={h} className="flex-shrink-0 flex flex-col items-center gap-1">
+                      <div className="w-14 h-14 rounded-full border-2 border-primary/30 bg-secondary/50 flex items-center justify-center">
+                        <span className="text-[10px] font-body text-muted-foreground">{h.slice(0, 3)}</span>
+                      </div>
+                      <span className="text-[10px] font-body text-muted-foreground">{h}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="font-body text-xs text-muted-foreground mt-5 text-center italic">
+                  Perfil como funil: Bio → Highlights → Feed → CTA → Conversão
+                </p>
               </div>
-              <p className="font-body text-xs text-muted-foreground mt-3 italic">
-                Cada post com lógica de conversão — não conteúdo por conteúdo.
-              </p>
             </motion.div>
           </div>
+
+          {/* Simulated Instagram feed grid — below the before/after */}
+          <motion.div variants={fadeUp} custom={3} className="mt-10">
+            <p className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground mb-4 text-center">
+              6 posts conceituais iniciais
+            </p>
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-1 rounded-xl overflow-hidden max-w-3xl mx-auto">
+              {conceptPosts.map((post, i) => (
+                <div key={post.title} className="relative aspect-square bg-secondary/60 group overflow-hidden">
+                  <img
+                    src={[restaurantImg, grilledDish, foodDetail, terraceImg, foodDetail, grilledDish][i]}
+                    alt={post.title}
+                    className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    loading="lazy"
+                    width={400}
+                    height={400}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-2">
+                    <p className="font-body text-[9px] font-semibold text-foreground leading-tight">{post.title}</p>
+                    <p className="font-body text-[8px] text-primary/80">{post.type}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="font-body text-xs text-muted-foreground mt-3 italic text-center">
+              Cada post com lógica de conversão — não conteúdo por conteúdo.
+            </p>
+          </motion.div>
         </motion.div>
 
         {/* B2C Preview — Premium embedded demo */}
