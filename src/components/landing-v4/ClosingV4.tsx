@@ -45,7 +45,13 @@ const ClosingV4 = () => {
               size="lg"
               className="w-full bg-gradient-fire text-primary-foreground shadow-fire hover:opacity-90 transition-opacity rounded-xl px-6 py-3.5 touch-manipulation"
             >
-              <a href="#assinatura">Aprovar direção e iniciar a fundação</a>
+              <a
+                href="https://wa.me/5548996496950"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Aprovar direção e iniciar a fundação
+              </a>
             </Button>
           </motion.div>
         </motion.div>
