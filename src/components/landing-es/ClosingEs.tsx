@@ -11,9 +11,9 @@ const fadeUp = {
   }),
 };
 
-const ClosingV4 = () => {
+const ClosingEs = () => {
   return (
-    <section id="fechamento" className="scroll-mt-24 py-16 md:py-20 relative">
+    <section id="cierre" className="scroll-mt-24 py-16 md:py-20 relative">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} className="text-center">
           <motion.div variants={fadeUp} custom={0} className="glow-line w-16 mx-auto mb-8" />
@@ -23,7 +23,7 @@ const ClosingV4 = () => {
             custom={1}
             className="font-display text-balance text-4xl md:text-5xl font-bold leading-tight mb-6"
           >
-            Não se trata de <span className="text-muted-foreground italic font-normal">marketing por vaidade</span>.
+            No se trata de <span className="text-muted-foreground italic font-normal">marketing por vanidad</span>.
           </motion.h2>
 
           <motion.p
@@ -31,12 +31,12 @@ const ClosingV4 = () => {
             custom={2}
             className="font-body text-lg md:text-xl text-secondary-foreground/82 leading-relaxed max-w-2xl mx-auto mb-4"
           >
-            Trata-se de organizar captação, prova e conversão para o Fogo aparecer melhor
-            e transformar mais decisão em mesa ocupada.
+            Se trata de organizar captación, prueba y conversión para que Fogo aparezca mejor
+            y transforme más decisiones en mesas ocupadas.
           </motion.p>
 
           <motion.p variants={fadeUp} custom={3} className="font-body text-muted-foreground mb-8 max-w-xl mx-auto">
-            O contexto já existe. A fundação é o próximo passo.
+            El contexto ya existe. La base es el próximo paso.
           </motion.p>
 
           <motion.div variants={fadeUp} custom={4} className="max-w-[360px] mx-auto mb-12">
@@ -45,7 +45,7 @@ const ClosingV4 = () => {
               size="lg"
               className="w-full bg-gradient-fire text-primary-foreground shadow-fire hover:opacity-90 transition-opacity rounded-xl px-6 py-3.5 touch-manipulation"
             >
-              <a href="#assinatura">Aprovar direção e iniciar a fundação</a>
+              <a href="#firma">Aprobar dirección e iniciar la base</a>
             </Button>
           </motion.div>
         </motion.div>
@@ -53,7 +53,7 @@ const ClosingV4 = () => {
         <Separator className="mb-10 opacity-55" />
 
         <motion.div
-          id="assinatura"
+          id="firma"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -65,23 +65,23 @@ const ClosingV4 = () => {
             <p className="font-body text-[11px] uppercase tracking-[0.22em] text-primary mb-3">Operador</p>
             <h3 className="font-display text-3xl md:text-4xl font-bold mb-3">Gabriel Lopes</h3>
             <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-lg">
-              Estratégia, aquisição e direção editorial aplicadas a negócios locais
-              que precisam vender melhor, não só parecer mais presentes.
+              Estrategia, adquisición y dirección editorial aplicadas a negocios locales
+              que necesitan vender mejor, no solo parecer más presentes.
             </p>
           </div>
           <div className="md:text-right">
-            <p className="font-body text-[11px] uppercase tracking-[0.22em] text-primary mb-3">Estrutura</p>
+            <p className="font-body text-[11px] uppercase tracking-[0.22em] text-primary mb-3">Estructura</p>
             <h3 className="font-display text-3xl md:text-4xl font-bold mb-3 text-primary">A Última Ideia</h3>
             <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl md:ml-auto">
-              Operação criativa com visão de negócio: posicionamento, tráfego, conteúdo e superfícies digitais
-              organizados para gerar mais captação e mais clareza comercial.
+              Operación creativa con visión de negocio: posicionamiento, tráfico, contenido y superficies digitales
+              organizadas para generar más captación y más claridad comercial.
             </p>
           </div>
         </motion.div>
 
         <div className="mt-12 text-center">
           <p className="font-body text-xs text-muted-foreground/55 tracking-wider">
-            © 2026 A Última Ideia · Proposta confidencial para Fogo, Canasvieiras
+            © 2026 A Última Ideia · Propuesta confidencial para Fogo, Canasvieiras
           </p>
         </div>
       </div>
@@ -89,4 +89,4 @@ const ClosingV4 = () => {
   );
 };
 
-export default ClosingV4;
+export default ClosingEs;
